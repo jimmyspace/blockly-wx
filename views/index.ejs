@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>壳壳板在线编程</title>
+  <meta charset="utf-8">
+  <meta name="keywords" content="壳壳板在线编程" />
+  <meta name="description" content="壳壳板cocobit编程、创造、科学、工程、数学，全球领先的青少年嵌入式编程套件。" />
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" id="WebViewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="/public/stylesheets/reset.css">
+  <link rel="stylesheet" href="/dist/index.css">
+</head>
+
+<body>
+  <div id="blocklyDiv" class="blocklyDiv"></div>
+  <!-- 左侧工具栏 -->
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <!-- 循环 -->
+  <sep></sep>
+   <category name="循环" colour="#5CA65C">
+     <block type="controls_repeat_ext">
+       <value name="TIMES">
+         <shadow type="math_number">
+           <field name="NUM">10</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="controls_whileUntil">
+       <field name="MODE">WHILE</field>
+     </block>
+     <block type="controls_for">
+       <field name="VAR" variabletype="">i</field>
+       <value name="FROM">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+       <value name="TO">
+         <shadow type="math_number">
+           <field name="NUM">10</field>
+         </shadow>
+       </value>
+       <value name="BY">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+     </block>
+   </category>
+ 
+   <!-- 逻辑 -->
+   <sep></sep>
+   <category name="逻辑" colour="#5C81A6">
+     <block type="controls_if"></block>
+     <block type="logic_compare">
+       <field name="OP">EQ</field>
+     </block>
+     <block type="logic_operation">
+       <field name="OP">AND</field>sen
+     </block>
+     <block type="logic_negate"></block>
+     <block type="logic_boolean">
+       <field name="BOOL">TRUE</field>
+     </block>
+     <block type="logic_null"></block>
+   </category>
+   
+   <!-- 变量 -->
+   <sep></sep>
+   <category name="变量" colour="#A65C81" custom="VARIABLE"></category>
+ 
+   <!-- 数学 -->
+   <sep></sep>
+   <category name="数学" colour="#5C68A6">
+     <block type="math_number">
+       <field name="NUM">0</field>
+     </block>
+     <block type="math_arithmetic">
+       <field name="OP">ADD</field>
+       <value name="A">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+       <value name="B">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="math_modulo">
+       <value name="DIVIDEND">
+         <shadow type="math_number">
+           <field name="NUM">64</field>
+         </shadow>
+       </value>
+       <value name="DIVISOR">
+         <shadow type="math_number">
+           <field name="NUM">10</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="math_compare">
+       <value name="NUM1">
+         <shadow type="math_number">
+           <field name="NUM">10</field>
+         </shadow>
+       </value>
+       <value name="NUM2">
+         <shadow type="math_number">
+           <field name="NUM">20</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="math_single">
+       <field name="OP">ROOT</field>
+       <value name="NUM">
+         <shadow type="math_number">
+           <field name="NUM">9</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="math_random_int">
+       <value name="FROM">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+       <value name="TO">
+         <shadow type="math_number">
+           <field name="NUM">100</field>
+         </shadow>
+       </value>
+     </block>
+   </category>
+ 
+   <!-- 函数 -->
+   <sep></sep>
+   <category name="函数" colour="#a5935b" custom="PROCEDURE">
+   </category>
+ 
+   <!-- 文本 -->
+   <sep></sep>
+   <category name="文本" colour="#a5935b">
+     <block type="text">
+       <field name="TEXT"></field>
+     </block>
+     <block type="text_length">
+       <value name="VALUE">
+         <shadow type="text">
+           <field name="TEXT">abc</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="text_join">
+       <mutation items="2"></mutation>
+     </block>
+     <block type="text_compare">
+       <value name="STR1">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+       <value name="STR2">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+     </block>
+     <block type="text_subsrting">
+       <value name="STR">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+       <value name="START">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="LENGTH">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="text_parse_int">
+       <value name="STR">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+     </block>
+     <block type="int_to_text">
+       <value name="NUM">
+         <shadow type="math_number">
+           <field name="NUM"></field>
+         </shadow>
+       </value>
+     </block>
+     <block type="text_get_char">
+       <value name="STR">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+       <value name="INDEX">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+   </category>
+ 
+   <!-- 时间 -->
+   <sep></sep>
+   <category name="时间" colour="#a5935b">
+     <block type="time_delay">
+       <value name="DELAY_TIME_MILI">
+         <shadow type="math_number">
+           <field name="NUM">1000</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="time_delaymills">
+       <value name="DELAY_TIME_MILL">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="infinite_loop"></block>
+   </category>
+ 
+   <!-- 初级 -->
+   <sep></sep>
+   <category name="初级" expanded="true" colour="#a5935b">
+    <category name="LED显示">
+     <block type="muti_led_set_flag_with_no">
+       <value name="LED_NO">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="muti_led_set_on_with_xy">
+       <value name="LED_X">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="LED_Y">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="muti_led_set_off_with_xy">
+       <value name="LED_X">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="LED_Y">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="muti_led_get_flag_with_xy">
+       <value name="LED_X">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="LED_Y">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="muti_led_show_with_but">
+     </block>
+     <block type="muti_led_show_with_str">
+       <value name="STR">
+         <shadow type="text">
+           <field name="TEXT"></field>
+         </shadow>
+       </value>
+     </block>
+     <block type="muti_led_show_with_icon0">
+     </block>
+     <block type="muti_led_show_with_icon1">
+     </block>
+     <block type="muti_led_show_with_icon2">
+     </block>
+     <block type="muti_led_show_with_icon3">
+     </block>
+     <block type="muti_led_show_with_icon4">
+     </block>
+     <block type="muti_led_show_with_icon5">
+     </block>
+     <block type="muti_led_show_with_icon6">
+     </block>
+     <block type="muti_led_show_with_icon7">
+     </block>
+     <block type="muti_led_show_with_icon8">
+     </block>
+     <block type="muti_led_show_with_icon9">
+     </block>
+     <block type="muti_led_show_with_icon10">
+     </block>
+     <block type="muti_led_show_with_icon11">
+     </block>
+    </category>
+    <category name="按键" colour="#a5935b">
+     <block type="but_on_flag">
+     </block>
+     <block type="but_get_flag">
+     </block>
+    </category>
+    <category name="加速度" colour="#a5935b">
+     <block type="spped_get_acce">
+     </block>
+     <block type="speed_get_angu">
+     </block>
+    </category>
+    <category name="无线" colour="#a5935b">
+     <block type="wire_send_num">
+     </block>
+     <block type="wire_send_str">
+     </block>
+     <block type="wire_rec_num">
+     </block>
+     <block type="wire_rec_str">
+     </block>
+    </category>
+    <category name="舵机" colour="#a5935b">
+     <block type="steering_turn_to">
+       <value name="ANGLE">
+         <shadow type="math_number">
+           <field name="NUM">90</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="steering_get_angle">
+     </block>
+     <block type="steering_turn_with_time">
+       <value name="TIME">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+       <value name="ANGLE">
+         <shadow type="math_number">
+           <field name="NUM">90</field>
+         </shadow>
+       </value>
+     </block>
+    </category>
+    <category name="蜂鸣器" colour="#a5935b">
+     <block type="buzzer_set_flag">
+     </block>
+     <block type="buzzer_speak_with_ms">
+       <value name="MS">
+         <shadow type="math_number">
+           <field name="NUM">1000</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="buzzer_speak_with_s">
+       <value name="S">
+         <shadow type="math_number">
+           <field name="NUM">1</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="buzzer_paly_music">
+     </block>
+    </category>
+    <category name="热敏" colour="#a5935b">
+     <block type="thermistor_get_value">
+     </block>
+    </category>
+    <category name="光敏" colour="#a5935b">
+     <block type="photoresistor_get_value">
+     </block>
+    </category>
+    <category name="数码管" colour="#a5935b">
+     <block type="digitron_show_num">
+       <value name="NUM">
+         <shadow type="math_number">
+           <field name="NUM">8888</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="digitron_show_with_no">
+       <value name="VAL">
+         <shadow type="text">
+           <field name="TEXT">1</field>
+         </shadow>
+       </value>
+     </block>
+    </category>
+    <category name="电位器" colour="#a5935b">
+     <block type="potentiometer_get_value">
+     </block>
+    </category>
+    <category name="温度" colour="#a5935b">
+     <block type="temperature_get_value">
+     </block>
+    </category>
+    <category name="湿度" colour="#a5935b">
+     <block type="humidity_get_value">
+     </block>
+    </category>
+    <category name="风扇" colour="#a5935b">
+     <block type="fan_set_flag">
+     </block>
+     <block type="fan_set_speed">
+     </block>
+    </category>
+    <category name="三色LED" colour="#a5935b">
+     <block type="rgb_led_set_flag_and_colour">
+     </block>
+     <block type="rgb_led_get_flag_and_colour">
+     </block>
+    </category>
+    <category name="彩虹灯" colour="#a5935b">
+     <block type="rainbow_led_set_colour">
+     </block>
+     <block type="rainbow_led_set_colour_with_no">
+       <value name="LED_NO">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="rainbow_led_set_rgb_with_no">
+       <value name="LED_NO">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="COLOUR_R">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="COLOUR_G">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+       <value name="COLOUR_B">
+         <shadow type="math_number">
+           <field name="NUM">0</field>
+         </shadow>
+       </value>
+     </block>
+    </category>
+    <category name="红外" colour="#a5935b">
+     <block type="infra_red_rec_num">
+     </block>
+    </category>
+    <category name="单色LED" colour="#a5935b">
+     <block type="single_led_set_flag">
+     </block>
+     <block type="single_led_get_flag">
+     </block>
+    </category>
+    <category name="压力" colour="#a5935b">
+     <block type="pressure_get_value">
+     </block>
+    </category>
+   </category>
+ <xml xmlns="http://www.w3.org/1999/xhtml"></block></xml>
+   
+ </xml>
+  <script>
+    var cWidth = document.body.clientWidth
+    var cHeight = document.body.clientHeight
+    var blocklyDiv = document.getElementById("blocklyDiv")
+    blocklyDiv.style.width = cWidth + "px"
+    blocklyDiv.style.height = cHeight + "px"
+  </script>
+  <script src="/blockly/blockly_uncompressed.js"></script>
+
+  <!-- 块定义 -->
+  <script src="/blockly/blocks/base/loops.js"></script>
+  <script src="/blockly/blocks/base/math.js"></script>
+  <script src="/blockly/blocks/base/text.js"></script>
+  <!-- <script src="/blockly/blocks/base/lists.js"></script> -->
+  <script src="/blockly/blocks/base/colour.js"></script>
+  <script src="/blockly/blocks/base/variables.js"></script>
+  <script src="/blockly/blocks/base/procedures.js"></script>
+  
+  <script src="/blockly/blocks/base/time.js"></script>
+
+  <script src="/blockly/blocks/base/other.js"></script>
+  <script src="/blockly/blocks/junior/muti_led.js"></script>
+  <script src="/blockly/blocks/junior/button.js"></script>
+  <script src="/blockly/blocks/junior/speed.js"></script>
+  <script src="/blockly/blocks/junior/wireless.js"></script>
+  <script src="/blockly/blocks/junior/steering.js"></script>
+  <script src="/blockly/blocks/junior/buzzer.js"></script>
+  <script src="/blockly/blocks/junior/thermistor.js"></script>
+  <script src="/blockly/blocks/junior/photoresistor.js"></script>
+  <script src="/blockly/blocks/junior/pressure.js"></script>
+  <script src="/blockly/blocks/junior/digitron.js"></script>
+  <script src="/blockly/blocks/junior/potentiometer.js"></script>
+  <script src="/blockly/blocks/junior/temperature.js"></script>
+  <script src="/blockly/blocks/junior/humidity.js"></script>
+  <script src="/blockly/blocks/junior/fan.js"></script>
+  <script src="/blockly/blocks/junior/rgb_led.js"></script>
+  <script src="/blockly/blocks/junior/rainbow_led.js"></script>
+  <script src="/blockly/blocks/junior/infra_red.js"></script>
+  <script src="/blockly/blocks/junior/single_led.js"></script>
+
+   <!-- ARDUINO代码生成器定义 -->
+  <script src="/blockly/generators/arduino.js"></script>
+
+  <script src="/blockly/generators/arduino/base/logic.js"></script>
+  <script src="/blockly/generators/arduino/base/loops.js"></script>
+  <script src="/blockly/generators/arduino/base/map.js"></script>
+  <script src="/blockly/generators/arduino/base/math.js"></script>
+  <script src="/blockly/generators/arduino/base/procedures.js"></script>
+  
+  <script src="/blockly/generators/arduino/base/text.js"></script>
+  <script src="/blockly/generators/arduino/base/time.js"></script>
+  <script src="/blockly/generators/arduino/base/variables.js"></script>
+  <script src="/blockly/generators/arduino/base/other.js"></script>
+  <script src="/blockly/generators/arduino/junior/muti_led.js"></script>
+  <script src="/blockly/generators/arduino/junior/button.js"></script>
+  <script src="/blockly/generators/arduino/junior/speed.js"></script>
+  <script src="/blockly/generators/arduino/junior/wireless.js"></script>
+  <script src="/blockly/generators/arduino/junior/steering.js"></script>
+  <script src="/blockly/generators/arduino/junior/buzzer.js"></script>
+  <script src="/blockly/generators/arduino/junior/thermistor.js"></script>
+  <script src="/blockly/generators/arduino/junior/photoresistor.js"></script>
+  <script src="/blockly/generators/arduino/junior/pressure.js"></script>
+  <script src="/blockly/generators/arduino/junior/digitron.js"></script>
+  <script src="/blockly/generators/arduino/junior/potentiometer.js"></script>
+  <script src="/blockly/generators/arduino/junior/temperature.js"></script>
+  <script src="/blockly/generators/arduino/junior/humidity.js"></script>
+  <script src="/blockly/generators/arduino/junior/fan.js"></script>
+  <script src="/blockly/generators/arduino/junior/rgb_led.js"></script>
+  <script src="/blockly/generators/arduino/junior/rainbow_led.js"></script>
+  <script src="/blockly/generators/arduino/junior/infra_red.js"></script>
+  <script src="/blockly/generators/arduino/junior/single_led.js"></script>
+
+  <!-- JS代码生成器定义 -->
+  <script src="/blockly/generators/javascript.js"></script>
+
+  <script src="/blockly/generators/javascript/base/logic.js"></script>
+  <script src="/blockly/generators/javascript/base/loops.js"></script>
+  <script src="/blockly/generators/javascript/base/map.js"></script>
+  <script src="/blockly/generators/javascript/base/math.js"></script>
+  <script src="/blockly/generators/javascript/base/procedures.js"></script>
+ 
+  <script src="/blockly/generators/javascript/base/text.js"></script>
+  <script src="/blockly/generators/javascript/base/time.js"></script>
+  <script src="/blockly/generators/javascript/base/variables.js"></script>
+  <script src="/blockly/generators/javascript/base/other.js"></script>
+  <script src="/blockly/generators/javascript/junior/muti_led.js"></script>
+  <script src="/blockly/generators/javascript/junior/button.js"></script>
+  <script src="/blockly/generators/javascript/junior/speed.js"></script>
+  <script src="/blockly/generators/javascript/junior/wireless.js"></script>
+  <script src="/blockly/generators/javascript/junior/steering.js"></script>
+  <script src="/blockly/generators/javascript/junior/buzzer.js"></script>
+  <script src="/blockly/generators/javascript/junior/thermistor.js"></script>
+  <script src="/blockly/generators/javascript/junior/photoresistor.js"></script>
+  <script src="/blockly/generators/javascript/junior/pressure.js"></script>
+  <script src="/blockly/generators/javascript/junior/digitron.js"></script>
+  <script src="/blockly/generators/javascript/junior/potentiometer.js"></script>
+  <script src="/blockly/generators/javascript/junior/temperature.js"></script>
+  <script src="/blockly/generators/javascript/junior/humidity.js"></script>
+  <script src="/blockly/generators/javascript/junior/fan.js"></script>
+  <script src="/blockly/generators/javascript/junior/rgb_led.js"></script>
+  <script src="/blockly/generators/javascript/junior/rainbow_led.js"></script>
+  <script src="/blockly/generators/javascript/junior/infra_red.js"></script>
+  <script src="/blockly/generators/javascript/junior/single_led.js"></script>
+
+  <script src="/blockly/msg/js/zh-hans.js"></script>
+  <script src="/public/msg/zh-hans.js"></script>
+  <script>
+    var toolboxText = document.getElementById('toolbox').outerHTML;
+	  	//对分类名进行语言转换
+	  	toolboxText = toolboxText.replace(/(^|[^%]){(\w+)}/g,
+	      function(m, p1, p2) {return p1 + MSG[p2];});
+	  	var toolboxXml = Blockly.Xml.textToDom(toolboxText);
+    var demoWorkspace = Blockly.inject(blocklyDiv,
+	        { 
+				toolbox : toolboxXml, 
+				collapse : true, 
+				comments : true, 
+				disable : true, 
+				maxBlocks : Infinity, 
+				trashcan : true, 
+				horizontalLayout : false, 
+				toolboxPosition : 'start', 
+				css : true, 
+				media : '/blockly/media/', 
+				rtl : false, 
+				scrollbars : false, 
+				sounds : true, 
+				oneBasedIndex : true,
+				zoom : {
+					controls : true, 
+					wheel : true, 
+					startScale : 1, 
+					maxScale : 4, 
+					minScale : 1, 
+					scaleSpeed : 1.2
+				}
+			});
+
+    //连接socket
+    var wsServer = new WebSocket('ws://192.168.5.28:3000');
+    wsServer.onopen = function (e) {
+      console.log("连接成功")
+      wsServer.send("Hi好")
+    };
+    wsServer.onclose = function (e) {//当链接关闭的时候触发
+      console.log("关闭连接")
+    };
+    wsServer.onmessage = function (e) {//后台返回消息的时候触发
+      console.log(e);
+    };
+    wsServer.onerror = function (e) {//错误情况触发
+
+    }
+  </script>
+</body>
+
+</html>
